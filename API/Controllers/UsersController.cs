@@ -5,12 +5,11 @@ using API.Entities;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class UsersController : ControllerBase
+    public class UsersController : BaseApiController
     {
         private readonly DataContext context; //context of database
 
@@ -20,7 +19,7 @@ namespace API.Controllers
             this.context = context; //controller defined by given context for database
         }
 
-        //This is synchronous coude
+        //This is synchronous code
         //complex query would constantly block threads
         //modern servers are multithreaded
         //apps more scalable as asynchronous
@@ -34,11 +33,13 @@ namespace API.Controllers
         //IEnumerable: Simple List with nothing else to the class 
         
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
             return await this.context.Users.ToListAsync();
         }
 
+        [Authorize]
         // api/users/3 with 3 being the id is the path retrieved
         [HttpGet("{id}")]
         public async Task<ActionResult<AppUser>> GetUser(int id)
