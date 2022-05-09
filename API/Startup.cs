@@ -30,12 +30,12 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(); //stops the blocking error 
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseSqlite(this.config.GetConnectionString("DefaultConnection"));
 
             });
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -56,6 +56,9 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            //may require further research:
+            app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
             app.UseAuthorization();
 
