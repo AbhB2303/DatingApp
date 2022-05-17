@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using API.Extensions;
 
-namespace API.Entities
+namespace API.DTOs
 {
-    public class AppUser
+    public class MemberDto
     {
         //properties
         //auto generate with prop (tap tab twice)
@@ -12,17 +12,15 @@ namespace API.Entities
 
         public string Username { get; set; }
 
-        public byte[] PasswordHash { get; set; }
+        public string PhotoUrl { get; set; }
 
-        public byte[] PasswordSalt { get; set; }
-
-        public DateTime DateOfBirth { get; set; }
+        public int Age { get; set; }
 
         public string KnownAs { get; set; }
 
-        public DateTime Created { get; set; } = DateTime.Now;
+        public DateTime Created { get; set; }
 
-        public DateTime LastActive { get; set; } = DateTime.Now;
+        public DateTime LastActive { get; set; }
 
         public string Gender { get; set; }
 
@@ -36,12 +34,6 @@ namespace API.Entities
 
         public string Country { get; set; }
 
-        public ICollection<Photo> Photos { get; set; }
-
-        // public int getAge(){
-        //     return DateOfBirth.CalcAge();
-        // }
-
-
+        public ICollection<PhotoDTO> Photos { get; set; }
     }
 }
