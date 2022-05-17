@@ -5,16 +5,16 @@ Created By:
 Abhinav Batra
 
 
-Objective
+# Objective
 The objective of this project is to build a dating app application to become familiar with full stack development of an angular application.
 
-Description
+# Description
 [to be completed]
 
-Languages
-C#, Typescript, 
+# Languages
+C#, Typescript, HTML, Javascript, CSS
 
-
+# Diagrams
 The following is a diagram of the repository pattern used in this project
 ![image](https://user-images.githubusercontent.com/56567796/168829016-eef0953b-374c-4ddd-b5c7-01b2ae690112.png)
 
